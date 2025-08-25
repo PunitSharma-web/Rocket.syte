@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rocket.syte | NSW Department of Education</title>
+    <title>Rocket.syte | Science Showcase TPHS 2025</title>
     <style>
         * {
             margin: 0;
@@ -19,64 +19,87 @@
             min-height: 100vh;
         }
 
-        /* NSW Government Header */
-        .nsw-header {
-            background: #002664;
+        /* Header with Logo and Navigation */
+        .header-container {
+            background: linear-gradient(135deg, #000814 0%, #001d3d 50%, #003566 100%);
             color: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0, 38, 100, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
 
-        .nsw-header-content {
+        .logo-section {
+            padding: 1rem 0;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .logo-container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
             display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .nsw-logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            color: white;
-            text-decoration: none;
-        }
-
-        .waratah {
-            width: 48px;
-            height: 48px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            font-size: 24px;
-            color: #002664;
-            font-weight: bold;
+            align-items: center;
         }
 
-        .nsw-text {
+        .logo-image {
+            max-height: 80px;
+            width: auto;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        /* Navigation */
+        .main-nav {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
-            flex-direction: column;
-            line-height: 1.2;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0;
         }
 
-        .nsw-text .main {
-            font-size: 18px;
-            font-weight: 700;
+        .nav-item {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
         }
 
-        .nsw-text .sub {
-            font-size: 14px;
-            opacity: 0.9;
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom-color: #00d4ff;
+            color: white;
+            transform: translateY(-1px);
         }
 
+        .nav-item.active {
+            background: rgba(255, 255, 255, 0.15);
+            border-bottom-color: #00d4ff;
+            color: white;
+            box-shadow: inset 0 0 10px rgba(0, 212, 255, 0.2);
+        }
+
+        /* Site Header/Hero Section */
         .site-header {
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%);
             color: white;
-            padding: 3rem 0;
+            padding: 4rem 0;
             position: relative;
             overflow: hidden;
         }
@@ -126,7 +149,7 @@
         }
 
         .site-title {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 800;
             margin-bottom: 1rem;
             letter-spacing: -0.02em;
@@ -163,46 +186,6 @@
             font-size: 1rem;
             opacity: 0.8;
             font-weight: 500;
-        }
-
-        /* Navigation */
-        .main-nav {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            overflow-x: auto;
-        }
-
-        .nav-item {
-            padding: 1.2rem 2rem;
-            cursor: pointer;
-            color: #002664;
-            font-weight: 500;
-            border-bottom: 3px solid transparent;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .nav-item:hover {
-            background: #f0f4f8;
-            border-bottom-color: #3b82f6;
-        }
-
-        .nav-item.active {
-            background: #f0f4f8;
-            border-bottom-color: #002664;
-            color: #002664;
         }
 
         /* Content Sections */
@@ -498,8 +481,23 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .nsw-header-content {
+            .logo-container {
                 padding: 0 1rem;
+            }
+
+            .logo-image {
+                max-height: 60px;
+            }
+
+            .nav-content {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding: 0 1rem;
+            }
+
+            .nav-item {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
             }
 
             .site-title {
@@ -508,14 +506,6 @@
 
             .hero-content {
                 padding: 0 1rem;
-            }
-
-            .nav-content {
-                justify-content: flex-start;
-            }
-
-            .nav-item {
-                padding: 1rem 1.5rem;
             }
 
             .container {
@@ -552,20 +542,62 @@
         @keyframes fadeIn {
             to { opacity: 1; }
         }
+
+        /* Logo placeholder styles */
+        .logo-placeholder {
+            width: 400px;
+            height: 80px;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
     </style>
 </head>
 <body class="loading">
-    <!-- NSW Government Header -->
-    <header class="nsw-header">
-        <div class="nsw-header-content">
-            <a href="#" class="nsw-logo">
-                <div class="waratah">🌸</div>
-                <div class="nsw-text">
-                    <div class="main">NSW Government</div>
-                    <div class="sub">Department of Education</div>
+    <!-- Header with Logo and Navigation -->
+    <header class="header-container">
+        <!-- Logo Section -->
+        <div class="logo-section">
+            <div class="logo-container">
+                <!-- Replace this div with your actual logo image -->
+                <div class="logo-placeholder">
+                    ROCKET.SYTE - SCIENCE SHOWCASE TPHS 2025
                 </div>
-            </a>
+                <!-- Uncomment and replace with your logo file:
+                <img src="your-logo-file.png" alt="Rocket.syte Logo" class="logo-image">
+                -->
+            </div>
         </div>
+
+        <!-- Navigation -->
+        <nav class="main-nav">
+            <div class="nav-content">
+                <div class="nav-item active" onclick="showSection('command-centre')">
+                    🏠 Command Centre
+                </div>
+                <div class="nav-item" onclick="showSection('physics')">
+                    ⚡ Rocket Physics
+                </div>
+                <div class="nav-item" onclick="showSection('history')">
+                    📚 Space History
+                </div>
+                <div class="nav-item" onclick="showSection('experiments')">
+                    🧪 Experiments
+                </div>
+                <div class="nav-item" onclick="showSection('resources')">
+                    📖 Resources
+                </div>
+                <div class="nav-item" onclick="showSection('careers')">
+                    🚀 Careers
+                </div>
+            </div>
+        </nav>
     </header>
 
     <!-- Site Header -->
@@ -592,30 +624,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Navigation -->
-    <nav class="main-nav">
-        <div class="nav-content">
-            <div class="nav-item active" onclick="showSection('command-centre')">
-                🏠 Command Centre
-            </div>
-            <div class="nav-item" onclick="showSection('physics')">
-                ⚡ Rocket Physics
-            </div>
-            <div class="nav-item" onclick="showSection('history')">
-                📚 Space History
-            </div>
-            <div class="nav-item" onclick="showSection('experiments')">
-                🧪 Experiments
-            </div>
-            <div class="nav-item" onclick="showSection('resources')">
-                📖 Resources
-            </div>
-            <div class="nav-item" onclick="showSection('careers')">
-                🚀 Careers
-            </div>
-        </div>
-    </nav>
 
     <!-- Main Content -->
     <div class="container">
@@ -771,7 +779,7 @@
                 </div>
                 
                 <div class="card">
-                    <span class="card-icon">🏗️</span>
+                    <span class="card-icon">🗂️</span>
                     <h3>Multi-Stage Rocket Design</h3>
                     <p><strong>Materials:</strong> Multiple bottles, timers, cameras for analysis</p>
                     <p><strong>Objective:</strong> Build multi-stage rockets and understand why staging improves performance</p>
@@ -822,7 +830,7 @@
                         <a href="#" class="resource-link">🛰️ Orbit Simulator</a>
                         <a href="#" class="resource-link">📊 Launch Calculator</a>
                         <a href="#" class="resource-link">🎮 Mission Planner</a>
-                        <a href="#" class="resource-link">📐 Trajectory Plotter</a>
+                        <a href="#" class="resource-link">📏 Trajectory Plotter</a>
                     </div>
                 </div>
                 
@@ -926,10 +934,10 @@
                 <a href="#">Accessibility</a>
                 <a href="#">Copyright</a>
                 <a href="#">Contact Us</a>
-                <a href="https://education.nsw.gov.au">NSW Department of Education</a>
+                <a href="#">TPHS Science Department</a>
             </div>
             <p style="margin-top: 2rem; opacity: 0.8;">
-                © 2025 NSW Department of Education | Rocket.syte - Inspiring Future Space Explorers
+                © 2025 TPHS Science Showcase | Rocket.syte - Inspiring Future Space Explorers
             </p>
             <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 1rem;">
                 This educational resource supports the NSW Science and Technology K-12 Syllabus
