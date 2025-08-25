@@ -19,7 +19,7 @@
             min-height: 100vh;
         }
 
-        /* Header with Logo and Navigation */
+        /* Header with Navigation Only */
         .header-container {
             background: linear-gradient(135deg, #000814 0%, #001d3d 50%, #003566 100%);
             color: white;
@@ -29,32 +29,10 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
 
-        .logo-section {
-            padding: 1rem 0;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        .logo-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .logo-image {
-            max-height: 80px;
-            width: auto;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-        }
-
         /* Navigation */
         .main-nav {
-            background: rgba(255, 255, 255, 0.1);
+            background: transparent;
             backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .nav-content {
@@ -67,7 +45,7 @@
         }
 
         .nav-item {
-            padding: 1rem 1.5rem;
+            padding: 1.2rem 1.5rem;
             cursor: pointer;
             color: rgba(255, 255, 255, 0.9);
             font-weight: 500;
@@ -481,14 +459,6 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .logo-container {
-                padding: 0 1rem;
-            }
-
-            .logo-image {
-                max-height: 60px;
-            }
-
             .nav-content {
                 justify-content: flex-start;
                 overflow-x: auto;
@@ -496,7 +466,7 @@
             }
 
             .nav-item {
-                padding: 0.8rem 1rem;
+                padding: 1rem 1.2rem;
                 font-size: 0.9rem;
             }
 
@@ -543,38 +513,12 @@
             to { opacity: 1; }
         }
 
-        /* Logo placeholder styles */
-        .logo-placeholder {
-            width: 400px;
-            height: 80px;
-            background: linear-gradient(135deg, #00d4ff, #0099cc);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-        }
+        /* Remove all CSS related to logo placeholder */
     </style>
 </head>
 <body class="loading">
-    <!-- Header with Logo and Navigation -->
+    <!-- Header with Navigation Only -->
     <header class="header-container">
-        <!-- Logo Section -->
-        <div class="logo-section">
-            <div class="logo-container">
-                <!-- Replace this div with your actual logo image -->
-                <div class="logo-placeholder">
-                    ROCKET.SYTE - SCIENCE SHOWCASE TPHS 2025
-                </div>
-                <!-- Uncomment and replace with your logo file:
-                <img src="your-logo-file.png" alt="Rocket.syte Logo" class="logo-image">
-                -->
-            </div>
-        </div>
-
         <!-- Navigation -->
         <nav class="main-nav">
             <div class="nav-content">
@@ -1050,13 +994,16 @@
             }
         });
 
+        // Remove intersection observer animations - make cards static
         // Add card hover effects with slight delay
         document.querySelectorAll('.card').forEach((card, index) => {
-            card.style.animationDelay = `${index * 0.1}s`;
-            card.classList.add('loading');
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
         });
 
-        // Intersection Observer for animations
+        // Remove intersection observer for animations - cards are now static
+        // Commented out to make cards static and prevent overlapping during scroll
+        /*
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1077,6 +1024,13 @@
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'all 0.6s ease';
             observer.observe(el);
+        });
+        */
+
+        // Make timeline items static too
+        document.querySelectorAll('.timeline-item').forEach(el => {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
         });
 
         // Add click effects to buttons
